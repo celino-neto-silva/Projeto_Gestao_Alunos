@@ -9,31 +9,32 @@ O núcleo do negócio é gerir alunos com determinados recursos de gestão dispo
 
 ->Requisitos Funcionais / Funcionalidades:
 
--Adicionar aluno
--Remover aluno
--Listar alunos
--Pesquisar aluno
+Adicionar aluno
+Remover aluno
+Listar alunos
+Pesquisar aluno
 
 ->Requisitos Técnicos:
 
--Geração do projeto utilizando Spring Initializer
--Adicionar depedências:
-    -Spring Web
-    -Spring Boot Dev Tools
-    -Lombok
-    -Thymeleaf
-    -JPA
-    -H2 database
--Utilizar maven
--JDK 21
--Configurar base de dados no ApplicationProperties
--Ligação com base de dados ("Spring Data JPA")
--Utilização de componentes Spring Boot
-    -Models
-    -Repository
-    -Controller
-    -View
--Utilização de Thymeleaf para as Views
--Utilização de CSS
+Geração do projeto utilizando Spring Initializer
+Adicionar depedências:
+    Spring Web
+    Spring Boot Dev Tools
+    Lombok
+    Thymeleaf
+    JPA
+    H2 database
+    
+Utilizar maven
+JDK 21
+Configurar base de dados no ApplicationProperties
+Ligação com base de dados ("Spring Data JPA")
+Utilização de componentes Spring Boot
+    Models
+    Repository
+    Controller
+    View
+Utilização de Thymeleaf para as Views
+Utilização de CSS
 -Utilização de JavaScript
 
