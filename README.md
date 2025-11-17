@@ -1,7 +1,7 @@
 #Projeto Gestão de Alunos
 -------------------------
 
-->Descrição:
+#Descrição:
 
 O presente projeto tem como objetivo desenvolver um sistema de gesão de alunos utilizando Spring Boot e Spring Data Repository.
 
