@@ -12,7 +12,6 @@ O núcleo do negócio é gerir alunos com determinados recursos de gestão dispo
 Adicionar aluno
 Remover aluno
 Listar alunos
-Pesquisar aluno
 
 #Requisitos Técnicos:
 
@@ -54,7 +53,6 @@ Functional #Requisitos / Features:
 Add student
 Remove student
 List students
-Search student
 
 #Requisitos Technicians:
 
@@ -96,7 +94,6 @@ Le cœur du projet est de gérer les étudiants avec certaines ressources de ges
 Ajouter un étudiant
 Supprimer un étudiant
 Lister les étudiants
-Rechercher un étudiant
 
 #Exigences Techniques :
 
