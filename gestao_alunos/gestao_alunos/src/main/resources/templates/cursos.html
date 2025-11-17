@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Cursos</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+    <script th:src="@{/js/script.js}" defer></script>
+</head>
+<body>
+<header>
+    <h1>Gestão de Cursos</h1>
+</header>
+<nav>
+    <a href="/alunos">Alunos</a>
+    <a href="#">Cursos</a>
+    <a href="/unidadescurriculares">Unidades Curriculares</a>
+    <a href="/edicoes">Edições</a>
+    <a href="/matriculas">Matrículas</a>
+</nav>
+<main>
+    <section class="formulario">
+        <h2>Adicionar Curso</h2>
+        <form th:action="@{/cursos}" method="post" th:object="${novoCurso}">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" th:field="*{nome}" required>
+
+            <button type="submit" class="btn">Adicionar</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <section class="lista">
+        <h2>Listar Cursos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="c : ${cursos}">
+                    <td th:text="${c.id}">1</td>
+                    <td th:text="${c.nome}">Nome</td>
+                    <td>
+                        <form th:action="@{/cursos/remover}" method="post">
+                            <input type="hidden" name="id" th:value="${c.id}">
+                            <button type="submit" class="btn-remover">Remover</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(cursos)}">
+                    <td colspan="4">Sem cursos registados.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Matrículas</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+    <script th:src="@{/js/script.js}" defer></script>
+</head>
+<body>
+<header>
+    <h1>Gestão de Matrículas</h1>
+</header>
+<nav>
+    <a href="/alunos">Alunos</a>
+    <a href="/cursos">Cursos</a>
+    <a href="/unidadescurriculares">Unidades Curriculares</a>
+    <a href="/edicoes">Edições</a>
+    <a href="#">Matrículas</a>
+</nav>
+<main>
+    <section class="formulario">
+        <h2>Adicionar Matrícula</h2>
+        <form th:action="@{/matriculas}" method="post">
+            <!-- Campo de seleção para aluno -->
+            <div class="campo-formulario">
+                <label for="alunoId">Aluno:</label>
+                <select id="alunoId" name="alunoId" required>
+                    <option value="">-- Selecione um aluno --</option>
+                    <!-- Preenchendo a lista de alunos -->
+                    <option th:each="aluno : ${alunos}" th:value="${aluno.id}" th:text="${aluno.nome}"></option>
+                </select>
+            </div>
+
+            <!-- Campo de seleção para edição -->
+            <div class="campo-formulario">
+                <label for="edicaoId">Edição:</label>
+                <select id="edicaoId" name="edicaoId" required>
+                    <option value="">-- Selecione uma Edição --</option>
+                    <!-- Preenchendo a lista de edições -->
+                    <option th:each="edicao : ${edicoes}" th:value="${edicao.id}" th:text="${edicao.descricao}"></option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">
+                Registar Matrícula
+            </button>
+        </form>
+    </section>
+
+    <hr>
+
+    <!-- Seção para listar as matrículas -->
+    <section class="lista">
+        <h2>Listar Matrículas</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Aluno</th>
+                <th>Edição</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="matricula : ${matriculas}">
+                <td th:text="${matricula.id}"></td>
+                <td th:text="${matricula.aluno.nome}"></td>
+                <td th:text="${matricula.edicao.descricao}"></td>
+                <td>
+                    <form th:action="@{/matriculas/remover}" method="post">
+                        <input type="hidden" name="id" th:value="${matricula.id}">
+                        <button type="submit" class="btn-remover">Remover</button>
+                    </form>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(matriculas)}">
+                <td colspan="4">Sem matrículas registadas.</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+</body>
+</html>

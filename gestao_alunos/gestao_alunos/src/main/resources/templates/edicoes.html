@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Edições</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+    <script th:src="@{/js/script.js}" defer></script>
+</head>
+<body>
+<header>
+    <h1>Gestão de Edições</h1>
+</header>
+<nav>
+    <a href="/alunos">Alunos</a>
+    <a href="/cursos">Cursos</a>
+    <a href="/unidadescurriculares">Unidades Curriculares</a>
+    <a href="#">Edições</a>
+    <a href="/matriculas">Matrículas</a>
+</nav>
+<main>
+    <section class="formulario">
+        <h2>Adicionar Edição</h2>
+        <form th:action="@{/edicoes}" method="post">
+            <div class="campo-formulario">
+                <label for="descricao">Descrição:</label>
+                <input id="descricao" name="descricao" type="text" required>
+            </div>
+
+            <div class="campo-formulario">
+                <label for="cursoId">Curso:</label>
+                <select id="cursoId" name="cursoId">
+                    <option value="">-- Selecione um curso --</option>
+                    <option th:each="c : ${cursos}" th:value="${c.id}" th:text="${c.nome}"></option>
+                </select>
+            </div>
+
+            <div class="campo-formulario">
+                <label for="unidadecurricularId">Unidade Curricular</label>
+                <select id="unidadecurricularId" name="unidadecurricularId">
+                    <option value="">-- Selecione uma UC --</option>
+                    <option th:each="u : ${unidadescurriculares}" th:value="${u.id}" th:text="${u.nome}"></option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">
+                Registar Edição
+            </button>
+        </form>
+    </section>
+    <hr>
+    <section class="lista">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Curso</th>
+                    <th>Unidade Curricular</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="p : ${edicoes}">
+                    <td th:text="${p.id}"></td>
+                    <td th:text="${p.curso.nome}"></td>
+                    <td th:text="${p.unidadecurricular.nome}"></td>
+                    <td>
+                        <form th:action="@{/edicoes/remover}" method="post">
+                            <input type="hidden" name="id" th:value="${p.id}">
+                            <button type="submit" class="btn-remover">Remover</button>
+                        </form>
+                    </td>
+                </tr>
+
+                <tr th.if="${#lists.isEmpty(edicoes)}">
+                    <td colspan="4">Sem edicoes registadas.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+</body>
+</html>
