@@ -7,14 +7,14 @@ O presente projeto tem como objetivo desenvolver um sistema de gesão de alunos 
 
 O núcleo do negócio é gerir alunos com determinados recursos de gestão disponibilizados para o utilizador. Vamos abaixo ver esses recursos que também podem ser chamados de Requisitos Funcionais/Funcionalidades.
 
-->Requisitos Funcionais / Funcionalidades:
+#Requisitos Funcionais / Funcionalidades:
 
 Adicionar aluno
 Remover aluno
 Listar alunos
 Pesquisar aluno
 
-->Requisitos Técnicos:
+#Requisitos Técnicos:
 
 Geração do projeto utilizando Spring Initializer
 Adicionar depedências:
@@ -36,5 +36,5 @@ Utilização de componentes Spring Boot
     View
 Utilização de Thymeleaf para as Views
 Utilização de CSS
--Utilização de JavaScript
+Utilização de JavaScript
 
