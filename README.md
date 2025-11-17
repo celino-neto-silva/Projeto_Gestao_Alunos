@@ -37,4 +37,3 @@ Utilização de componentes Spring Boot
 Utilização de Thymeleaf para as Views
 Utilização de CSS
 Utilização de JavaScript
-------------------------
